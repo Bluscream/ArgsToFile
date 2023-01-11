@@ -9,8 +9,8 @@ namespace ArgsToFile
         static void Main(string[] args)
         {
             if (args.Length < 1) return;
-            string argstr = string.Join(" ", args);
-            string path =Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "adb.log");
+            string argstr = $"[{DateTime.Now.ToString()}] " + string.Join(" ", args);
+            string path =Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".log");
             if (!File.Exists(path))
             {
                 using (StreamWriter sw = File.CreateText(path))
